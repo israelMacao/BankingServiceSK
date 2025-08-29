@@ -1,0 +1,84 @@
+services:
+  # Base de datos PostgreSQL
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres-banco
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_admin_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-databases.sql:/docker-entrypoint-initdb.d/init-databases.sql
+    networks:
+      - banco-network
+
+  # Servicio Cliente
+  cliente-service:
+    build:
+      context: ./cliente
+      dockerfile: Dockerfile
+    container_name: cliente-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/DBcliente
+      SPRING_DATASOURCE_USERNAME: cliente_user
+      SPRING_DATASOURCE_PASSWORD: cliente_pass123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SPRING_JPA_SHOW_SQL: true
+      SERVER_PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - banco-network
+    restart: unless-stopped
+
+  # Servicio Cuenta
+  cuenta-service:
+    build:
+      context: ./cuenta
+      dockerfile: Dockerfile
+    container_name: cuenta-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/DBcuenta
+      SPRING_DATASOURCE_USERNAME: cuenta_user
+      SPRING_DATASOURCE_PASSWORD: cuenta_pass123
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SPRING_JPA_SHOW_SQL: true
+      SERVER_PORT: 8081
+      URL_SERVICIOCLIENTE: http://cliente-service:8080/api/
+      URL_PATH_IDENTIFICACION: clientes/identificacion/
+      URL_PATH_ID: clientes/
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+      - cliente-service
+    networks:
+      - banco-network
+    restart: unless-stopped
+
+  # Adminer para administrar la base de datos (opcional)
+  adminer:
+    image: adminer:4.8.1
+    container_name: adminer-banco
+    ports:
+      - "8082:8080"
+    networks:
+      - banco-network
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  banco-network:
+    driver: bridge
+    name: banco-network

@@ -1,0 +1,347 @@
+{
+	"info": {
+		"_postman_id": "b2087a5a-36fc-4efe-adf3-aacd36cd5df0",
+		"name": "PruebaTecnica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "crearCliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan Pérez M\",\r\n    \"genero\": \"M\",\r\n    \"edad\": 30,\r\n    \"identificacion\": \"1234567892\",\r\n    \"direccion\": \"Calle Principal 123\",\r\n    \"telefono\": \"34612345678\",\r\n    \"clienteId\": \"CLI001\",\r\n    \"contrasena\": \"1234nbfg\",\r\n    \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerClienteporId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clientes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerClientePorIdentificacion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clientes/identificacion/1234567890",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes",
+								"identificacion",
+								"1234567890"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerTodosClientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarCliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/clientes/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizacionCliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan Pablo Macao\",\r\n    \"genero\": \"M\",\r\n    \"edad\": 20,\r\n    \"identificacion\": \"1234567891\",\r\n    \"direccion\": \"Calle Nueva 789\",\r\n    \"telefono\": \"+34612345678\",\r\n    \"clienteId\": \"user1\",\r\n    \"contrasena\": \"newpassword123\",\r\n    \"estado\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/clientes/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"clientes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CuentasMovimientos",
+			"item": [
+				{
+					"name": "crearCuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroCuenta\": 123456789,\r\n    \"tipoCuenta\": \"AHORROS\",\r\n    \"saldo\": 5.00,\r\n    \"estado\": true,\r\n    \"identificacion\": \"1122334455\",\r\n    \"saldoInicial\":5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/cuentas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"cuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerTodasCtas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/cuentas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"cuentas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerCtaPorNumCta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/cuentas/1001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"cuentas",
+								"1001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizarCta",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroCuenta\": 123456789,\r\n    \"tipoCuenta\": \"CORRIENTE\",\r\n    \"saldo\": 5.00,\r\n    \"estado\": true,\r\n    \"identificacion\": \"1122334455\",\r\n    \"saldoInicial\": 5.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/cuentas/123456789",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"cuentas",
+								"123456789"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crearMovimiento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\r\n    \"fecha\": \"2025-08-29\",\r\n    \"tipoMovimiento\": \"C\",\r\n    \"valor\": 500.00,\r\n    \"saldo\": 1500.00,\r\n    \"cuentaId\": 1003\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/movimientos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"movimientos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerMovimiento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/movimientos/1003",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"movimientos",
+								"1003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reporte",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/api/movimientos/reporte?cuentaId=1003&startDate=2025-08-01&endDate=2025-09-25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"movimientos",
+								"reporte"
+							],
+							"query": [
+								{
+									"key": "cuentaId",
+									"value": "1003"
+								},
+								{
+									"key": "startDate",
+									"value": "2025-08-01"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-09-25"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
