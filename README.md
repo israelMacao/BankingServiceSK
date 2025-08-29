@@ -78,7 +78,7 @@ proyecto-banco/
 └── README-Docker.md           # Esta documentación
 ```
 
-## 📋 Prerrequisitos
+## 📋 Pre-requisitos
 ✅ Docker instalado (versión 20.0 o superior)
 ✅ Docker Compose instalado (versión 1.29 o superior)
 ✅ Git instalado (para clonar el repositorio)
@@ -107,41 +107,6 @@ docker-compose ps
 | Cliente | http://localhost:8080/api | API del servicio cliente |
 | Cuenta | http://localhost:8081/api | API del servicio cuenta |
 
-## 🏥 Monitoreo
-
-### Verificar estado de servicios
-```bash
-docker-compose ps
-```
-
-### Ver logs
-```bash
-# Todos los servicios
-docker-compose logs -f
-
-# Servicio específico
-docker-compose logs -f cliente-service
-docker-compose logs -f cuenta-service
-docker-compose logs -f postgres
-```
-
-
-## 🛠️ Comandos Útiles
-
-### Gestión de servicios
-```bash
-# Iniciar servicios
-docker-compose up -d
-
-# Detener servicios
-docker-compose down
-
-# Reiniciar un servicio específico
-docker-compose restart cliente-service
-
-# Escalar un servicio
-docker-compose up -d --scale cliente-service=2
-```
 
 ## 🧪 Pruebas Rápidas 
 
@@ -190,8 +155,43 @@ El sistema incluye datos de prueba:
 ### Persistencia de Datos
 Los datos se almacenan en un volumen Docker named `postgres_data` que persiste entre reinicios.
 
+## 🏥 Monitoreo
+
+### Verificar estado de servicios
+```bash
+docker-compose ps
+```
+
+### Ver logs
+```bash
+# Todos los servicios
+docker-compose logs -f
+
+# Servicio específico
+docker-compose logs -f cliente-service
+docker-compose logs -f cuenta-service
+docker-compose logs -f postgres
+```
+
+
+## 🛠️ Comandos Útiles
+
+### Gestión de servicios
+```bash
+# Iniciar servicios
+docker-compose up -d
+
+# Detener servicios
+docker-compose down
+
+# Reiniciar un servicio específico
+docker-compose restart cliente-service
+
+# Escalar un servicio
+docker-compose up -d --scale cliente-service=2
+```
+
 ## 🚨 Solución de Problemas
 
 ### Servicio no inicia
 1. Verificar logs: `docker-compose logs [servicio]`
-2.
